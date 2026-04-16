@@ -1,0 +1,149 @@
+import { motion } from "motion/react";
+import { ArrowRight, Shield, Star, Clock } from "lucide-react";
+import GradientButton from "@/components/ui/button-1";
+
+export const Hero = () => {
+  return (
+    <section className="relative overflow-hidden min-h-[95vh] flex items-center px-6 md:px-12 max-w-[1440px] mx-auto pt-20">
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(0,6,102,0.045) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Ambient glow */}
+      <div
+        className="absolute top-0 right-0 w-[800px] h-[800px] -z-10 pointer-events-none"
+        style={{ background: "radial-gradient(circle at 70% 30%, rgba(0,6,102,0.06) 0%, transparent 65%)" }}
+      />
+
+      <div className="grid md:grid-cols-12 items-center gap-12 w-full py-16">
+        {/* Left column */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="md:col-span-6 z-10"
+        >
+          {/* Live badge */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="inline-flex items-center gap-2.5 rounded-full px-4 py-2 mb-8"
+            style={{ background: "rgba(0,6,102,0.05)", border: "1px solid rgba(0,6,102,0.1)" }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            </span>
+            <span className="text-primary text-sm font-semibold tracking-wide">Now Accepting New Patients</span>
+          </motion.div>
+
+          <h1 className="text-[3.25rem] md:text-[4.25rem] font-extrabold tracking-tight text-primary leading-[1.06] mb-8">
+            Medicine built<br />
+            around{" "}
+            <span className="font-light italic">you,</span>
+            <br />
+            not just your<br />
+            symptoms.
+          </h1>
+
+          <p className="text-xl text-secondary mb-10 max-w-[440px] leading-relaxed font-light">
+            Personalized internal medicine and preventative wellness — where precision diagnostics meet genuinely compassionate care.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 items-center">
+            <GradientButton dark height="56px" onClick={() => {}}>
+              <span className="text-[1.05rem] flex items-center gap-2.5">
+                Book Consultation
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </GradientButton>
+            <button className="inline-flex items-center justify-center text-primary border border-primary/25 px-8 py-4 rounded-xl font-bold text-[1.05rem] hover:bg-primary/5 hover:border-primary/40 transition-all duration-300">
+              Explore Services
+            </button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            {[
+              { icon: Shield, label: "Board Certified" },
+              { icon: Star, label: "15+ Years Experience" },
+              { icon: Clock, label: "Same-day Appointments" },
+            ].map(({ icon: Icon, label }, i) => (
+              <div key={label} className="flex items-center gap-2">
+                {i > 0 && <div className="w-px h-4 bg-outline-variant/30 -ml-1 mr-2 hidden sm:block" />}
+                <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-3.5 h-3.5 text-primary" />
+                </div>
+                <span className="text-sm text-secondary font-medium">{label}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right column — image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, x: 40 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.15 }}
+          className="md:col-span-6 relative"
+        >
+          <div className="relative md:translate-x-8">
+            <img
+              className="w-full h-auto max-h-[640px] object-cover rounded-3xl editorial-shadow"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSf0u2asS1hSYSzJ1Ur_LYXPk8M3MI1ovIAwIUG46j-shlpzPsA2Ca4-KD8sCunPFVwb9lmdl5ytGcRRRYIFURDalV7KnHDLRRZFgu2sSm5T6D5yrwCyibOKIdo8UfPMvkAr4twnJpNxLCwqH1asYRjHFcG2vwc6nD0ey7uOvuYfa8qsp3u300PFolAYqXUGdnpP7ZvpWwonCLTQnCsyJtFj45TIA3c2zGidZPKMUvzTJxAhzDnMoFJRZ0raZSAooJNCvrjS_OxPI"
+              alt="Dr. Harper Montgomery"
+              referrerPolicy="no-referrer"
+            />
+
+            {/* Floating availability card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="absolute -bottom-6 left-0 md:-left-8 bg-white rounded-2xl p-5 w-[215px]"
+              style={{ boxShadow: "0 20px 60px -10px rgba(0,6,102,0.18)", border: "1px solid rgba(0,6,102,0.07)" }}
+            >
+              <p className="text-[9px] font-bold uppercase tracking-widest text-secondary mb-1.5">Next Available</p>
+              <p className="text-primary font-extrabold text-lg mb-3">Tomorrow, 9:00 AM</p>
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-1.5">
+                  {["SC", "MJ", "AL"].map((init) => (
+                    <div
+                      key={init}
+                      className="w-6 h-6 rounded-full bg-primary/10 border-2 border-white flex items-center justify-center text-[8px] font-bold text-primary"
+                    >
+                      {init}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-secondary font-medium">+120 this month</p>
+              </div>
+            </motion.div>
+
+            {/* Rating badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.1, duration: 0.5 }}
+              className="absolute top-8 -right-4 md:-right-6 bg-primary text-white rounded-2xl px-4 py-4 text-center"
+              style={{ boxShadow: "0 16px 48px -8px rgba(0,6,102,0.45)" }}
+            >
+              <p className="text-3xl font-extrabold leading-none mb-1.5">4.9</p>
+              <div className="flex gap-0.5 justify-center mb-1.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-[9px] text-white/60 font-bold uppercase tracking-widest">Patient Rating</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};

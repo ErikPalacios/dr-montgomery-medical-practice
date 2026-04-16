@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+
+  --color-primary: #000666;
+  --color-primary-container: #1a237e;
+  --color-on-primary: #ffffff;
+  
+  --color-surface: #f7f9fc;
+  --color-surface-container-low: #f2f4f7;
+  --color-surface-container-high: #e6e8eb;
+  --color-surface-container-highest: #e0e3e6;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #454652;
+  --color-secondary: #5b5f61;
+  --color-outline-variant: #c6c5d4;
+  
+  --radius-xl: 0.5rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  /* shadcn/ui compatibility aliases */
+  --color-background: #ffffff;
+  --color-foreground: #191c1e;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #e6e8eb;
+  --color-accent-foreground: #191c1e;
+  --color-border: #c6c5d4;
+  --color-input: #c6c5d4;
+  --color-ring: #000666;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #f2f4f7;
+  --color-muted-foreground: #454652;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans;
+  }
+}
+
+.editorial-shadow {
+  box-shadow: 0 32px 64px -12px rgba(25, 28, 30, 0.04);
+}
+
+.glass-header {
+  background: rgba(247, 249, 252, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.transition-all-300 {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gradient rotating button */
+@property --r {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotateGradient {
+  to { --r: 360deg; }
+}
+
+.rotatingGradient {
+  background: conic-gradient(
+    from var(--r) at 50% 50%,
+    #000666 0%,
+    #1e3a8a 22%,
+    #4169e1 42%,
+    #7ba7f5 50%,
+    #4169e1 58%,
+    #1e3a8a 78%,
+    #000666 100%
+  );
+  animation: rotateGradient 4s linear infinite;
+}
