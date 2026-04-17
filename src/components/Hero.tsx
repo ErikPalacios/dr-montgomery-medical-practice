@@ -1,25 +1,18 @@
 import { motion } from "motion/react";
 import { ArrowRight, Shield, Star, Clock } from "lucide-react";
 import GradientButton from "@/components/ui/button-1";
+import { FloatingPaths } from "@/components/ui/background-paths";
 
 export const Hero = () => {
   return (
-    <section className="relative overflow-hidden min-h-[95vh] flex items-center px-6 md:px-12 max-w-[1440px] mx-auto pt-20">
-      {/* Dot grid background */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(0,6,102,0.045) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      {/* Ambient glow */}
-      <div
-        className="absolute top-0 right-0 w-[800px] h-[800px] -z-10 pointer-events-none"
-        style={{ background: "radial-gradient(circle at 70% 30%, rgba(0,6,102,0.06) 0%, transparent 65%)" }}
-      />
+    <section className="relative overflow-hidden min-h-[95vh] flex items-start px-6 md:px-12 max-w-[1440px] mx-auto pt-6">
+      {/* Animated background paths */}
+      <div className="absolute inset-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
 
-      <div className="grid md:grid-cols-12 items-center gap-12 w-full py-16">
+      <div className="relative z-10 grid md:grid-cols-12 items-center gap-12 w-full pt-6 pb-16">
         {/* Left column */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -27,6 +20,15 @@ export const Hero = () => {
           transition={{ duration: 0.7 }}
           className="md:col-span-6 z-10"
         >
+          {/* Glass card */}
+          <div
+            className="backdrop-blur-md rounded-3xl p-8 md:p-10"
+            style={{
+              background: "rgba(255,255,255,0.72)",
+              border: "1px solid rgba(255,255,255,0.95)",
+              boxShadow: "0 8px 40px rgba(0,6,102,0.07), inset 0 1px 0 rgba(255,255,255,0.9)",
+            }}
+          >
           {/* Live badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -83,6 +85,7 @@ export const Hero = () => {
               </div>
             ))}
           </div>
+          </div>{/* end glass card */}
         </motion.div>
 
         {/* Right column — image */}
