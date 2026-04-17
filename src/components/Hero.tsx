@@ -5,14 +5,16 @@ import { FloatingPaths } from "@/components/ui/background-paths";
 
 export const Hero = () => {
   return (
-    <section className="relative overflow-hidden min-h-[95vh] flex items-start px-6 md:px-12 max-w-[1440px] mx-auto pt-6">
-      {/* Animated background paths */}
+    <section className="relative overflow-hidden min-h-[95vh] flex items-start">
+      {/* Animated background — full viewport width, no max-w constraint */}
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 grid md:grid-cols-12 items-center gap-12 w-full pt-6 pb-16">
+      {/* Content constrained to max-w */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
+      <div className="grid md:grid-cols-12 items-center gap-12 w-full pt-6 pb-16">
         {/* Left column */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -146,6 +148,7 @@ export const Hero = () => {
             </motion.div>
           </div>
         </motion.div>
+      </div>
       </div>
     </section>
   );
